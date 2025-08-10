@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button,  Navbar,  TextInput } from 'flowbite-react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {AiOutlineSearch} from 'react-icons/ai';
 import {FaMoon} from 'react-icons/fa';
+import {NavbarCollapse, NavbarLink, NavbarToggle } from 'flowbite-react';
 
-function Header() {
+export default function Header() {
+  const path = useLocation().pathname;
   return (
     <Navbar className='border-b-2'>
       <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
@@ -26,28 +28,42 @@ function Header() {
             <FaMoon />
         </Button>
 
-        
          {/* Sign in */}
         <Link to="/sign-in">
         <Button gradientDuoTone="purpleToBlue" className="w-20 h-10  bg-gradient-to-r from-purple-500 to-blue-500">
          Sign In
         </Button>
-        </Link>
+        </Link>    
+        <NavbarToggle/>
+        </div>
+        <NavbarCollapse>
+          <NavbarLink active={path === "/" } as={'div'}  >
+            <Link to="/">Home</Link>    
+          </NavbarLink>
 
-         
-         
-        
-      </div>
+          <NavbarLink active={path === "/about" } as={'div'} >
+            <Link to="/about">About</Link>
+          </NavbarLink>
 
-     
+          <NavbarLink active={path === "/projects" } as={'div'} >
+          <Link to="/projects">Projects</Link>          
+          </NavbarLink>
+          
+          {/* ye secend way hai */}
+          {/* <NavbarLink as={Link} to="/" active={path === "/"}>
+               Home
+          </NavbarLink>
 
-    </Navbar>
+          <NavbarLink as={Link} to="/about" active={path === "/about"}>
+              About
+          </NavbarLink>
+
+          <NavbarLink as={Link} to="/projects" active={path === "/projects"}>
+           Projects
+          </NavbarLink> */}
+                   
+        </NavbarCollapse>
+
+    </Navbar>    
   )
 }
-
-
-
-
-export default Header
-
-

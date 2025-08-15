@@ -30,9 +30,9 @@ export default function Header() {
 
          {/* Sign in  */}
         <Link to="/sign-in">
-        <Button gradientDuoTone="purpleToBlue" outline >
-         Sign In
-        </Button>
+        <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-gradient-to-bl focus:ring-cyan-300 dark:focus:ring-cyan-800">
+        sign in
+      </Button>
         </Link>    
         <NavbarToggle/>
         </div>
@@ -48,19 +48,6 @@ export default function Header() {
           <NavbarLink active={path === "/projects" } as={'div'} >
           <Link to="/projects">Projects</Link>          
           </NavbarLink>
-          
-          {/* ye secend way hai */}
-          {/* <NavbarLink as={Link} to="/" active={path === "/"}>
-               Home
-          </NavbarLink>
-
-          <NavbarLink as={Link} to="/about" active={path === "/about"}>
-              About
-          </NavbarLink>
-
-          <NavbarLink as={Link} to="/projects" active={path === "/projects"}>
-           Projects
-          </NavbarLink> */}
                    
         </NavbarCollapse>
 

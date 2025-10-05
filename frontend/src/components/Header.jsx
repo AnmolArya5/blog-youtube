@@ -10,7 +10,7 @@ import { toggleTheme } from '../redux/theme/themeSlice.js';
 export default function Header() {
   const path = useLocation().pathname;
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.theme.theme);
+  const theme = useSelector((state) => state.theme);
   const {currentUser} = useSelector(state => state.user)
   return (
     <Navbar className='border-b-2'>
@@ -33,19 +33,20 @@ export default function Header() {
            className="w-12 h-10 hidden sm:inline"
            color="gray"
            pill
-           onClick ={() => dispatch(toggleTheme())}>
-            {theme === 'light' ? <FaSun/> : <FaMoon/> }
-         
+           onClick={()=> dispatch(toggleTheme())}
+           x
+        >
+           {theme === 'light' ? <FaSun/> : <FaMoon/> } 
        </Button>
         {currentUser ? (
           <Dropdown arrowIcon={false}
-          inline
-          label={
-            <Avatar 
-              alt='user'
-              img={currentUser.profilePicture}
-              rounded
-            />
+             inline
+             label={
+               <Avatar 
+                 alt='user'
+                 img={currentUser.profilePicture}
+                 rounded
+               />
         }
           >
             <DropdownHeader>

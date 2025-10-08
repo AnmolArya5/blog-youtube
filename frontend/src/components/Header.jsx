@@ -34,7 +34,7 @@ export default function Header() {
            color="gray"
            pill
            onClick={()=> dispatch(toggleTheme())}
-           x
+           x="true"
         >
            {theme === 'light' ? <FaSun/> : <FaMoon/> } 
        </Button>

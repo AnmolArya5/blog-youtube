@@ -39,8 +39,6 @@ const SignIn = () => {
   } catch (error) {
     dispatch(signInFailuar(error.message));
   }
-    // ✅ success handling here
-    alert('Signin successful!');
 };
 
   return (

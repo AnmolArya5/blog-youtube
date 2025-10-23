@@ -44,7 +44,8 @@ export default function Header() {
              label={
                <Avatar 
                  alt='user'
-                 img={currentUser.profilePicture}
+                //  img={currentUser.profilePicture}
+                img="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                  rounded
                />
         }

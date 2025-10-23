@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 import { useDispatch, useSelector } from 'react-redux'
-import { signInStart, signInSuccess, signInFailuar } from '../redux/user/userSlice';
+import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
 
 const SignIn = () => {
   const [formData, setFormData] = useState ({});
@@ -15,7 +15,7 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
   e.preventDefault();
   if (!formData.email || !formData.password) {
-    return dispatch(signInFailuar('Fill out all the fields.'));
+    return dispatch(signInFailure('Fill out all the fields.'));
   }
   try {
     dispatch(signInStart());

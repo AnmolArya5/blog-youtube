@@ -2,6 +2,7 @@ import { Alert, Button, Modal, ModalHeader, ModalBody, TextInput } from 'flowbit
 import { useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 import {
   updateStart,
   updateSuccess,
@@ -145,6 +146,11 @@ export default function DashProfile() {
         <Button type="submit" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-gradient-to-bl focus:ring-cyan-300 dark:focus:ring-cyan-800" outline>
           Update
         </Button>
+        {currentUser.isAdmin && (
+          <Link to={'/create-post'}>
+            <Button type='button' className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-gradient-to-bl focus:ring-cyan-300 dark:focus:ring-cyan-800 w-full" outline>Create a Post</Button>
+          </Link>
+        )}
       </form>
 
       {/* ✅ Delete & Sign Out (Not functional yet) */}

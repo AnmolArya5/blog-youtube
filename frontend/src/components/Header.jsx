@@ -6,12 +6,29 @@ import {FaMoon, FaSun } from 'react-icons/fa';
 import {NavbarCollapse, NavbarLink, NavbarToggle } from 'flowbite-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice.js';
+import { signoutSuccess } from '../redux/user/userSlice.js';
+
 
 export default function Header() {
   const path = useLocation().pathname;
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
-  const {currentUser} = useSelector(state => state.user)
+  const {currentUser} = useSelector(state => state.user);
+  const handleSignout = async () => {
+      try {
+        const res = await fetch('/api/user/signout', {
+          method:'POST',
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          console.log(data.message);
+        } else {
+          dispatch(signoutSuccess());
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
   return (
     <Navbar className='border-b-2'>
       <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
@@ -58,7 +75,7 @@ export default function Header() {
              <DropdownItem>Profile</DropdownItem>
             </Link>
             <DropdownDivider/>
-            <DropdownItem>Sign Out</DropdownItem>
+            <DropdownItem onClick={handleSignout}>Sign Out</DropdownItem>
           </Dropdown>
         ) :
         (

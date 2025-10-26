@@ -11,14 +11,14 @@ export const updateUser = async ( req, res, next ) => {
         return next(errorHandler(400, 'you are not allowed to update this user'));
     }
     if (req.body.password){
-        if(req.body.password.length < 4){
-            return next(errorHandler(400, 'password must have 4 characters'));
+        if(req.body.password.length < 5){
+            return next(errorHandler(400, 'password must have 5 characters'));
         }
         req.body.password = bcryptjs.hashSync(req.body.password, 10);
     }
     if (req.body.username){
-        if(req.body.username.length < 4 || req.body.username.length > 20){
-            return next(errorHandler(400, 'username must have 4 and 20 chracters'));
+        if(req.body.username.length < 5 || req.body.username.length > 20){
+            return next(errorHandler(400, 'username must have 5 and 20 chracters'));
         }
         if(req.body.username.includes(' ')){
             return next(errorHandler(400, 'username cannot contain spaces'));

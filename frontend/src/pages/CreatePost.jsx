@@ -25,7 +25,7 @@ export default function CreatePost() {
             </Button>
         </div>
         <ReactQuill them='snow' placeholder='Write SomeThing.....' className='h-72 mb-12' required />
-        <Button type='submit' className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-gradient-to-bl focus:ring-cyan-300 dark:focus:ring-cyan-800" size='lg' outline>Publish</Button>
+         <Button type='submit' className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-gradient-to-bl focus:ring-cyan-300 dark:focus:ring-cyan-800" size='lg' outline>Publish</Button>
         </form>  
     </div>
   )

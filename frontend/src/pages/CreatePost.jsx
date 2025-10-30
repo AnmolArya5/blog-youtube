@@ -4,6 +4,17 @@ import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 
 export default function CreatePost() {
+    // const { file, setFile } = useState(null);
+    // const handleUpdloadImage = async () => {
+    //     try {
+    //        if (!file) {
+    //          return;
+    //        }
+    //        const Storage = getStorage();
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
     <h1 className='text-center text-3xl my-7 font-semibold'>Create a Post</h1>
@@ -19,8 +30,9 @@ export default function CreatePost() {
             </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 vorder-teal-500 border-dotted p-3">
-            <FileInput type='file' accept='image/*' />
-            <Button type='button' className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-gradient-to-bl focus:ring-cyan-300 dark:focus:ring-cyan-800" size='lg' outline>
+            < FileInput type='file' accept='image/*' onChange={(e)=>setFile(e.target.files[0])}/>
+            <Button type='button' className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-gradient-to-bl focus:ring-cyan-300 dark:focus:ring-cyan-800" size='lg' outline 
+            >
                 Upload Image
             </Button>
         </div>

@@ -5,6 +5,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Alert, Button, FileInput, Label, Select, TextInput } from 'flowbite-react';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreatePost() {
   const [file, setFile] = useState(null);
@@ -17,13 +18,16 @@ export default function CreatePost() {
     image: ''
   });
 
-  // Upload image to Cloudinary
+  const navigate = useNavigate();
+
+  // ✅ Upload image to Cloudinary
   const handleUploadImage = async () => {
     try {
       if (!file) {
         setImageUploadError('Please select an image');
         return;
       }
+
       setImageUploadError(null);
       setImageUploadProgress(0);
 
@@ -55,21 +59,35 @@ export default function CreatePost() {
     }
   };
 
-  // Handle form input changes
+  // ✅ Handle text input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handle content change from ReactQuill
+  // ✅ Handle editor content change
   const handleContentChange = (value) => {
     setFormData({ ...formData, content: value });
   };
 
-  const handleSubmit = (e) => {
+  // ✅ Submit form
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Post Data:', formData);
-    // Here you can send formData to your backend API
+    try {
+      // Example POST to backend (adjust URL later)
+      // const res = await axios.post('/api/posts', formData);
+      // const createdPost = res.data;
+
+      // For now, simulate slug from title:
+      const slug = formData.title.toLowerCase().replace(/\s+/g, '-');
+
+      console.log('Post Created:', { ...formData, slug });
+
+      // Navigate to the new post page
+      navigate(`/post/${slug}`);
+    } catch (error) {
+      console.error('Failed to create post:', error);
+    }
   };
 
   return (
@@ -102,7 +120,8 @@ export default function CreatePost() {
 
         {/* Image Upload */}
         <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
-          <Label className='mb-2 block' htmlFor='file-upload'>
+          <div>
+            <Label className='mb-2 block' htmlFor='file-upload'>
               Upload file
             </Label>
             <FileInput
@@ -111,6 +130,7 @@ export default function CreatePost() {
               accept='image/*'
               onChange={(e) => setFile(e.target.files[0])}
             />
+          </div>
           <Button
             type='button'
             className='bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-gradient-to-bl focus:ring-cyan-300 dark:focus:ring-cyan-800'

@@ -16,7 +16,7 @@ const postSchema = new mongoose.Schema(
         },
         Image: {
             type: String,
-            default: 'https://img.freepik.com/free-photo/online-message-blog-chat-communication-envelop-graphic-icon-concept_53876-139717.jpg?semt=ais_hybrid&w=740&q=80',
+             default: 'https://img.freepik.com/free-photo/online-message-blog-chat-communication-envelop-graphic-icon-concept_53876-139717.jpg?semt=ais_hybrid&w=740&q=80',
         },
         category: {
             type: String,

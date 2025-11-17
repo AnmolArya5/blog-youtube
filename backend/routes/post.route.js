@@ -1,12 +1,26 @@
 import express from 'express';
-import {verifyToken} from '../utils/verifyUser.js';
-import {create, getposts } from '../controllers/post.controller.js';
-import {getPostBySlug } from "../controllers/post.controller.js";
+import { verifyToken } from '../utils/verifyUser.js';
+import { create, getposts } from '../controllers/post.controller.js';
 
 const router = express.Router();
 
-router.post('/create', verifyToken, create);
-router.get('/getposts', getposts);
-router.get("/:slug", getPostBySlug); // 👈 add this line
+router.post('/create', verifyToken, create)
+router.get('/getposts', getposts)
+
 
 export default router;
+
+
+// try from youtube
+// import express from 'express';
+// import {verifyToken} from '../utils/verifyUser.js';
+// import {create, getposts } from '../controllers/post.controller.js';
+// import {getPostBySlug } from "../controllers/post.controller.js";
+
+// const router = express.Router();
+
+// router.post('/create', verifyToken, create);
+// router.get('/getposts', getposts);
+// router.get("/:slug", getPostBySlug); // 👈 add this line
+
+// export default router;

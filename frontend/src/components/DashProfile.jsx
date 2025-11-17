@@ -44,7 +44,7 @@ export default function DashProfile() {
       dispatch(updateStart());
 
       // ✅ Get JWT token stored during login
-      // const token = localStorage.getItem('token');
+      //  const token = localStorage.getItem('token');
 
       const res = await fetch( 
            `/api/user/update/${currentUser._id}`,
@@ -53,7 +53,7 @@ export default function DashProfile() {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            // Authorization: `Bearer ${token}`, // ✅ include auth header
+             Authorization: `Bearer ${token}`, // ✅ include auth header
           },
           body: JSON.stringify(formData),
         }
